@@ -3,23 +3,138 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Legend — GTA 6 Trophy Guide &amp; Tracker</title>
+<meta name="description" content="A complete guide to all 55 Grand Theft Auto VI trophies: a Platinum roadmap, an unlock guide for every trophy with sources, and a checklist that saves in your browser.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">Grand Theft Auto VI &middot; PS5 &middot; 55 trophies</p>
+    <h1>Leonida Legend</h1>
+    <p class="tagline">Every trophy, one honest roadmap, and a checklist that remembers where you left off. No online trophies. Platinum estimate: about 200 hours.</p>
+    <nav class="views" aria-label="Views">
+      <a href="#checklist" data-view="checklist">Checklist</a>
+      <a href="#roadmap" data-view="roadmap">Roadmap to Platinum</a>
+      <a href="#filters" data-view="filters">Filters &amp; spoilers</a>
+    </nav>
+  </div>
+  <div class="progress-wrap" role="status" aria-label="Trophy progress">
+    <div class="progress-line"><span id="progress-text">0 of 55 earned &middot; 0%</span><span id="progress-grade">Platinum 0/1 &middot; Gold 0/2 &middot; Silver 0/6 &middot; Bronze 0/46</span></div>
+    <div class="bar"><div id="progress-fill" class="fill" style="width:0%"></div></div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<main>
+  <section id="detail" class="detail" hidden aria-live="polite"></section>
+
+  <section id="view-checklist" class="view">
+    <h2>Trophy checklist</h2>
+    <p class="hint">Tick a trophy when you earn it — it stays ticked in this browser. Click any trophy to open its full guide, sources and roadmap stage.</p>
+    <div class="toolbar">
+      <label class="search">Search <input id="search" type="search" placeholder="Trophy name or keyword&hellip;" autocomplete="off"></label>
+      <label>Kind
+        <select id="kind">
+          <option value="all">All kinds</option>
+          <option value="story">Story</option>
+          <option value="missable">Missable</option>
+          <option value="collectibles">Collectibles</option>
+          <option value="activities">Activities</option>
+          <option value="online">Online</option>
+        </select>
+      </label>
+      <label>Grade
+        <select id="grade">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label>Status
+        <select id="status">
+          <option value="all">Earned &amp; unearned</option>
+          <option value="earned">Earned only</option>
+          <option value="unearned">Unearned only</option>
+        </select>
+      </label>
+    </div>
+    <p id="online-note" class="callout" hidden>There are no online trophies in GTA 6 — every trophy can be earned solo, offline, in single-player.</p>
+    <p id="empty-note" class="callout" hidden>No trophies match these filters. Try clearing the search or choosing another kind.</p>
+    <ul id="trophy-list" class="cards"></ul>
+  </section>
+
+  <section id="view-roadmap" class="view" hidden>
+    <h2>Roadmap to Platinum</h2>
+    <p class="hint">Earn in this order. The story cannot be missed, the one missable trophy is done early on purpose, and the long grinds come last when you know the map.</p>
+    <ol class="stages">
+      <li>
+        <h3>Stage 1 — Play the story (12 trophies)</h3>
+        <p>Chapters 1 to 5 plus the big set-piece missions: Gone Fishing, Breakfast Run, The Cartel Heist, Child's Play, Headliners, VCIA Takedown and Operation Savage Glory. Nothing here can be missed, so just enjoy the story — but do Stage 2's balcony meditation before Chapter 1 ends.</p>
+        <p class="stage-count" data-stage="1"></p>
+      </li>
+      <li>
+        <h3>Stage 2 — The one missable trophy first</h3>
+        <p><strong>Positive Mental Attitude</strong> is the only trophy that can be missed: meditate at all 18 spots, including Lucia's balcony meditation on the morning after Down to Earth in Chapter 1. It disappears when Chapter 1 ends, and it is not yet confirmed whether the trophy is still obtainable without it. Keep a separate Chapter 1 save as insurance.</p>
+        <p class="stage-count" data-stage="2"></p>
+      </li>
+      <li>
+        <h3>Stage 3 — Collectibles (4 trophies)</h3>
+        <p>Card sets, WAiNK location scans, vehicle scans and full map exploration. Scan everything new as you travel and these finish themselves while you play.</p>
+        <p class="stage-count" data-stage="3"></p>
+      </li>
+      <li>
+        <h3>Stage 4 — Activities &amp; side strands</h3>
+        <p>Races, stunts, shooting ranges, robberies, stranger strands (Kenton, Billy, Andy, Randy, Tyrone, Bret) and the big counters: 250 stunts, 50 challenges, 500 Criminal Profile actions. The Race Against Yago in Chapter 3 is time-limited — do it the moment it appears.</p>
+        <p class="stage-count" data-stage="4"></p>
+      </li>
+      <li>
+        <h3>Stage 5 — Cleanup &amp; 100%</h3>
+        <p>Finish the 100% checklist (Progress &rarr; Stats), mop up the last counters, and the Platinum pops when the 54th trophy lands. Roughly 200 hours all in, by guide estimates.</p>
+        <p class="stage-count" data-stage="5"></p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="view-filters" class="view" hidden>
+    <h2>Filters &amp; spoiler settings</h2>
+    <p class="hint">The same filters live on the checklist. This page explains what each one does, and holds the spoiler switch.</p>
+    <div class="settings-box">
+      <label class="spoiler-toggle">
+        <input id="spoiler" type="checkbox">
+        <span><strong>Hide story spoilers</strong> — hide the names and descriptions of story trophies until you earn them. Earned story trophies are always shown.</span>
+      </label>
+      <p class="fine">Spoiler mode only affects the 12 story trophies. Missable, collectible and activity trophies are never hidden, because their names are the warning.</p>
+    </div>
+    <h3>Kinds</h3>
+    <dl class="kinds">
+      <dt>Story (12)</dt><dd>Trophies earned by finishing chapters and story missions. None can be missed.</dd>
+      <dt>Missable (1)</dt><dd>Positive Mental Attitude — the balcony meditation in Chapter 1 can be lost. Flagged in red everywhere it appears.</dd>
+      <dt>Collectibles (4)</dt><dd>Card sets, WAiNK scans and map exploration.</dd>
+      <dt>Activities (38)</dt><dd>Races, stunts, robberies, stranger strands and counters.</dd>
+      <dt>Online (0)</dt><dd>There are no online trophies. The filter exists so you can verify that for yourself.</dd>
+    </dl>
+    <h3>Your progress file</h3>
+    <p class="hint">Progress is saved in this browser only (localStorage). Export it to keep a backup, or import it on another machine.</p>
+    <div class="toolbar">
+      <button id="export" type="button">Export progress</button>
+      <label class="import-btn">Import progress <input id="import" type="file" accept="application/json"></label>
+      <button id="reset" type="button">Reset all ticks</button>
+    </div>
+    <p id="import-status" class="fine" role="status"></p>
+  </section>
+
+  <section class="sources-note">
+    <h2>About this list</h2>
+    <p>Trophy names, descriptions and grades follow the list reported across independent guides in November 2026 (OutputLag, GTABase and others) — 55 trophies, 1 Platinum, 2 Gold, 6 Silver, 46 Bronze, 28 of them hidden. No official list had been published by the platform holder at the time of writing, so re-check Exophase or TrueTrophies after launch. Five trophies have no confirmed unlock method yet; their guides say so honestly instead of guessing. Each trophy below links its sources.</p>
+    <p class="fine">An unofficial fan guide. Not affiliated with, endorsed by, or connected to the game's publisher. No artwork, logos or game screenshots are used here.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Legend — a GTA 6 trophy guide &amp; tracker. Works fully offline; progress never leaves your browser unless you export it.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
