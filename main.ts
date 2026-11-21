@@ -16,7 +16,7 @@
 // The grader runs it with /output instead. It is deterministic: same input,
 // same bytes out, every run.
 
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
@@ -26,8 +26,11 @@ const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 // Start from a clean output directory so a second run cannot inherit stale
 // files from the first — that is what keeps two runs byte-identical.
-rmSync(out, { recursive: true, force: true });
+// NOTE: never remove the output directory itself: on the grader /output is
+// a mount point and removing it throws "Device or resource busy", which
+// crashed round 1. Empty its contents instead; the directory stays.
 mkdirSync(out, { recursive: true });
+for (const entry of readdirSync(out)) rmSync(join(out, entry), { recursive: true, force: true });
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
 mkdirSync(join(out, 'screenshots'), { recursive: true });
 if (existsSync(join(here, 'screenshots'))) {
